@@ -1,0 +1,355 @@
+/* Reset and base styles */
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --bg-gradient-start: #667eea;
+    --bg-gradient-end: #764ba2;
+    --container-bg: rgba(255, 255, 255, 0.98);
+    --text-primary: #1a1a1a;
+    --text-secondary: #4a4a4a;
+    --text-muted: #666666;
+    --border-color: #e0e0e0;
+    --input-bg: #ffffff;
+    --input-border: #d0d0d0;
+    --input-border-focus: #667eea;
+    --btn-bg: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    --btn-hover: linear-gradient(135deg, #5568d3 0%, #6a4394 100%);
+    --error-bg: #fee2e2;
+    --error-text: #991b1b;
+    --error-border: #fecaca;
+    --shadow-soft: 0 20px 40px rgba(0, 0, 0, 0.1);
+    --shadow-hover: 0 25px 50px rgba(0, 0, 0, 0.15);
+    --radius: 12px;
+    --radius-sm: 8px;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+    background: linear-gradient(135deg, var(--bg-gradient-start) 0%, var(--bg-gradient-end) 100%);
+    min-height: 100vh;
+    padding: 2rem 1rem;
+    line-height: 1.6;
+    color: var(--text-primary);
+}
+
+.container {
+    max-width: 500px;
+    margin: 0 auto;
+    background: var(--container-bg);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-soft);
+    overflow: hidden;
+    backdrop-filter: blur(10px);
+}
+
+/* Header */
+.app-header {
+    padding: 2rem 2rem 1.5rem;
+    text-align: center;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.app-title {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    letter-spacing: -0.02em;
+}
+
+.app-subtitle {
+    font-size: 0.875rem;
+    color: var(--text-muted);
+    font-weight: 400;
+}
+
+/* Search Section */
+.search-section {
+    padding: 1.5rem 2rem;
+}
+
+.weather-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.form-label {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+}
+
+.form-input {
+    padding: 0.75rem 1rem;
+    font-size: 0.875rem;
+    font-family: 'Inter', sans-serif;
+    border: 1.5px solid var(--input-border);
+    border-radius: var(--radius-sm);
+    background: var(--input-bg);
+    color: var(--text-primary);
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    width: 100%;
+}
+
+.form-input::placeholder {
+    color: #a0a0a0;
+}
+
+.form-input:hover {
+    border-color: #b0b0b0;
+}
+
+.form-input:focus {
+    outline: none;
+    border-color: var(--input-border-focus);
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+.form-hint {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+}
+
+.form-hint a {
+    color: var(--input-border-focus);
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.form-hint a:hover {
+    text-decoration: underline;
+}
+
+/* Submit Button */
+.submit-btn {
+    padding: 0.875rem 1.5rem;
+    font-size: 0.9375rem;
+    font-weight: 600;
+    font-family: 'Inter', sans-serif;
+    color: white;
+    background: var(--btn-bg);
+    border: none;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+    margin-top: 0.5rem;
+}
+
+.submit-btn:hover {
+    background: var(--btn-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(102, 126, 234, 0.3);
+}
+
+.submit-btn:active {
+    transform: translateY(0);
+}
+
+.submit-btn:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.3);
+}
+
+.submit-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+/* Result Section */
+.result-section {
+    padding: 0 2rem 2rem;
+}
+
+/* Error Container */
+.error-container {
+    background: var(--error-bg);
+    border: 1.5px solid var(--error-border);
+    border-radius: var(--radius-sm);
+    padding: 1rem 1.25rem;
+    margin-bottom: 1rem;
+}
+
+.error-message {
+    color: var(--error-text);
+    font-size: 0.875rem;
+    font-weight: 500;
+    line-height: 1.5;
+}
+
+/* Weather Container */
+.weather-container {
+    animation: slideDown 0.3s ease;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.location {
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.location-name {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+/* Temperature Section */
+.temperature-section {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 0.25rem;
+    margin-bottom: 0.75rem;
+    text-align: center;
+}
+
+.temperature {
+    font-size: 3.5rem;
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: -0.02em;
+}
+
+.temperature-unit {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+    margin-top: 0.5rem;
+}
+
+/* Condition Section */
+.condition-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.weather-condition {
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+    text-transform: capitalize;
+}
+
+.weather-icon {
+    width: 64px;
+    height: 64px;
+    object-fit: contain;
+}
+
+/* Details Section */
+.details-section {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.75rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border-color);
+}
+
+.detail-item {
+    background: #f9fafb;
+    padding: 0.75rem;
+    border-radius: var(--radius-sm);
+    text-align: center;
+    border: 1px solid #f0f0f0;
+}
+
+.detail-label {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    font-weight: 500;
+    margin-bottom: 0.375rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.detail-value {
+    font-size: 0.9375rem;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+/* Responsive Design */
+@media (max-width: 640px) {
+    body {
+        padding: 1rem 0.75rem;
+    }
+    
+    .container {
+        border-radius: 10px;
+    }
+    
+    .app-header {
+        padding: 1.5rem 1.25rem 1.25rem;
+    }
+    
+    .app-title {
+        font-size: 1.75rem;
+    }
+    
+    .search-section {
+        padding: 1.25rem;
+    }
+    
+    .result-section {
+        padding: 0 1.25rem 1.5rem;
+    }
+    
+    .temperature {
+        font-size: 3rem;
+    }
+    
+    .temperature-unit {
+        font-size: 1.25rem;
+    }
+    
+    .details-section {
+        grid-template-columns: 1fr;
+        gap: 0.625rem;
+    }
+    
+    .detail-item {
+        padding: 0.625rem;
+    }
+}
+
+@media (max-width: 380px) {
+    .temperature {
+        font-size: 2.5rem;
+    }
+    
+    .temperature-unit {
+        font-size: 1.125rem;
+    }
+    
+    .location-name {
+        font-size: 1.125rem;
+    }
+}
